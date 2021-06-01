@@ -30,13 +30,13 @@ firstIndex(int *arr, int size, int x)
 	}
 	
 	//base case
-	if(arr[0] == x)
+	if(arr[size-1] == x)
 	{
 		return 0;
 	}
 	
 	//rec call
-	int ans = firstIndex(arr+1, size, x);
+	int ans = firstIndex(arr+1, size-1, x);
 	
 	//small calculation
 	return 1 + ans;
