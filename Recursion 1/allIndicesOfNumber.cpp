@@ -24,57 +24,58 @@ Sample Output :
 1 3 4
 */
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int allIndexes(int input[], int size, int x, int output[])
 {
 	//base case
-	if(size==0)
+	if (size == 0)
 		return 0;
-	
-	int s =allIndexes(input+1, size-1, x, output);
 
-	for(int i=0; i<s; i++)
+	int s = allIndexes(input + 1, size - 1, x, output);
+
+	for (int i = 0; i < s; i++)
 		output[i]++;
-	
-	if(input[0] == x)
+
+	if (input[0] == x)
 	{
-		for(int i=0; i<s; i++)
+		for (int i = 0; i < s; i++)
 		{
-			output[s-i] = output[s-i-1];
+			output[s - i] = output[s - i - 1];
 		}
-		
+
 		output[0] = 0;
 		s++;
 	}
-	
+
 	return s;
 }
 
-int main(){
-    int n;
-    cin >> n;
-  
-    int *input = new int[n];
-    
-    for(int i = 0; i < n; i++) {
-        cin >> input[i];
-    }
-    
-    int x;
-    
-    cin >> x;
-    
-    int *output = new int[n];
-    
-    int size = allIndexes(input, n, x, output);
-    for(int i = 0; i < size; i++) {
-        cout << output[i] << " ";
-    }
-    
-    delete [] input;
-    delete [] output;
-    
-}
+int main()
+{
+	int n;
+	cin >> n;
 
+	int *input = new int[n];
+
+	for (int i = 0; i < n; i++)
+	{
+		cin >> input[i];
+	}
+
+	int x;
+
+	cin >> x;
+
+	int *output = new int[n];
+
+	int size = allIndexes(input, n, x, output);
+	for (int i = 0; i < size; i++)
+	{
+		cout << output[i] << " ";
+	}
+
+	delete[] input;
+	delete[] output;
+}
