@@ -29,29 +29,37 @@ Sample Output 2 :
 #include <iostream>
 using namespace std;
 
-void merge(int a[], int b[], int low, int mid, int high)
+//function for merging two arrays
+void merge(int *a, int *b, int low, int mid, int high)
 {
-    for (int i = low; i <= high; i++)
+    for(int i=low; i<=high; i++)
     {
         b[i] = a[i];
     }
-    int left = low;
-    int right = mid + 1;
-    int index = low;
-    while (left <= mid && right <= high)
+
+    int left = left;
+    int right = mid+1;
+    int index = left;
+
+    while(left<=mid && right<=high)
     {
-        if (b[left] <= b[right])
+        if(b[left] <= b[right])
+        {
             a[index++] = b[left++];
+        }
         else
+        {
             a[index++] = b[right++];
+        }
     }
 
-    // copy remainder of the left side
-    int remainder = mid - left + 1;
-    for (int i = 0; i < remainder; i++)
+    //remainder
+    int remainder = mid - left -1;
+    for(int i=0; i<remainder; i++)
     {
-        a[index + i] = b[left + i];
+        a[index + 1] = b[left + 1];
     }
+
 }
 
 // merge sort starts here
