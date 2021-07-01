@@ -30,55 +30,44 @@ Sample Output 2 :
 using namespace std;
 
 //function for merging two arrays
-void merge(int *a, int *b, int low, int mid, int high)
+void merge(int a[], int b[],  int low, int mid, int high)
 {
-    for(int i=low; i<=high; i++)
-    {
-        b[i] = a[i];
-    }
+  for(int i = low; i <= high; i++) {
+    b[i] = a[i];
+  }
+  int left = low;
+  int right = mid+1;
+  int index = low;
+  while(left <= mid && right <= high) {
+    if(b[left] <= b[right])
+      a[index++] = b[left++];
+    else
+      a[index++] = b[right++];
+  }
 
-    int left = left;
-    int right = mid+1;
-    int index = left;
-
-    while(left<=mid && right<=high)
-    {
-        if(b[left] <= b[right])
-        {
-            a[index++] = b[left++];
-        }
-        else
-        {
-            a[index++] = b[right++];
-        }
-    }
-
-    //remainder
-    int remainder = mid - left -1;
-    for(int i=0; i<remainder; i++)
-    {
-        a[index + 1] = b[left + 1];
-    }
-
+  // copy remainder of the left side
+  int remainder = mid - left +1;
+  for(int i = 0; i < remainder; i++) {
+    a[index+i] = b[left+i];
+  }
 }
 
 // merge sort starts here
 void mergeSort(int a[], int b[], int low, int high)
 {
-    if (low >= high)
-        return;
-    int mid = (low + high) / 2;
-    mergeSort(a, b, low, mid);
-    mergeSort(a, b, mid + 1, high);
-    merge(a, b, low, mid, high);
+  if(low >= high) return;
+  int mid = (low+high)/2;
+  mergeSort(a, b, low, mid);
+  mergeSort(a, b, mid+1, high);
+  merge(a, b, low, mid, high);
 }
 
 // prepare for real mergesort()
 void mergeSort(int a[], int len)
 {
-    int *b = new int[len];
-    mergeSort(a, b, 0, len - 1);
-    delete[] b;
+  int *b = new int[len];
+  mergeSort(a, b, 0, len-1);
+  delete[] b;
 }
 
 //main function
