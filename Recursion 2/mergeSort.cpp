@@ -39,9 +39,9 @@ void merge(int a[], int b[],  int low, int mid, int high)
   int right = mid+1;
   int index = low;
   while(left <= mid && right <= high) {
-    if(b[left] <= b[right])
+    if(b[left] <= b[right]) 
       a[index++] = b[left++];
-    else
+    else 
       a[index++] = b[right++];
   }
 
