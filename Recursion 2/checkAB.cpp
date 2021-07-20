@@ -30,40 +30,41 @@ Sample Output 2 :
 false
 
 */
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <cstring>
 using namespace std;
 
-bool checkAB(char* str, int startIndex)
+bool checkAB(char *str, int startIndex)
 {
-    if(strlen(str) == 0)
+    if (str[startIndex] == '\0')
         return true;
 
-    if(str[0] != 'a')
+    if (str[startIndex] != 'a')
         return false;
 
-    if(str[strlen(str)+1]!='\0' && str[strlen(str)+2]!='\0')
+    if (str[startIndex + 1] != '\0' && str[startIndex + 2] != '\0')
     {
-        if(str[1]=='b' && str[2]=='b')
+        if (str[startIndex+1] == 'b' && str[startIndex+2] == 'b')
         {
-            return checkAB(str+3, 3);
+            return checkAB(str, startIndex + 3);
         }
     }
-    return checkAB(str+1, 1);
+    return checkAB(str, startIndex + 1);
 }
 
-bool checkAB(char* input)
+bool checkAB(char *input)
 {
     return checkAB(input, 0);
 }
 
-int main() {
+int main()
+{
     char input[100];
     bool ans;
     cin >> input;
-    ans=checkAB(input);
-    if(ans)
-        cout<< "true" << endl;
+    ans = checkAB(input);
+    if (ans)
+        cout << "true" << endl;
     else
-        cout<< "false" << endl;
+        cout << "false" << endl;
 }
