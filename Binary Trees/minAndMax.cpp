@@ -20,22 +20,6 @@ public:
 using namespace std;
 
 //SOLUTION
-template <typename T>
-class BinaryTreeNode
-{
-public:
-    T data;
-    BinaryTreeNode<T> *left;
-    BinaryTreeNode<T> *right;
-
-    BinaryTreeNode(T data)
-    {
-        this->data = data;
-        left = NULL;
-        right = NULL;
-    }
-};
-
 /*
 	The first value of the pair must be the minimum value in the tree and 
 	the second value of the pair must be the maximum value in the tree
